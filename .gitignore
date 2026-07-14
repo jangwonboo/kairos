@@ -24,3 +24,6 @@ desktop.ini
 .idea/
 *.suo
 *.user
+
+# TypeScript incremental build info
+*.tsbuildinfo

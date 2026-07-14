@@ -23,7 +23,7 @@ function highlightTimeString(text: string, timeString: string): JSX.Element {
   )
 }
 
-export function QuoteCard({ quote, time, language, effect }: Props): JSX.Element {
+export function QuoteCard({ quote, language, effect }: Props): JSX.Element {
   return (
     <div className={`quote-card quote-card--${effect}`}>
       {(language === 'en' || language === 'both') && (

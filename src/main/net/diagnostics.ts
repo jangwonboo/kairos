@@ -55,6 +55,7 @@ export async function runProviderTests(): Promise<ProviderTestResult[]> {
   const unsplashKey = getDecryptedKey('background.keys.unsplash') ?? ''
   const pexelsKey = getDecryptedKey('background.keys.pexels') ?? ''
   const pixabayKey = getDecryptedKey('background.keys.pixabay') ?? ''
+  void pixabayKey  // key stored but test uses public endpoint
 
   return Promise.all([
     testProvider('unsplash', { Authorization: `Client-ID ${unsplashKey}` }, timeoutMs),

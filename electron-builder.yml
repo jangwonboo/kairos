@@ -26,6 +26,8 @@ extraResources:
     to: fallback-bg
     filter:
       - "**/*.webp"
+      - "**/*.jpg"
+      - "**/*.jpeg"
   - from: resources/fonts
     to: fonts
     filter:

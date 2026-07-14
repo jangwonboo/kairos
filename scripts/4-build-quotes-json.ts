@@ -12,7 +12,7 @@
  * Run: npm run build-quotes-json
  */
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from 'fs'
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs'
 import { join } from 'path'
 import type { Quote, QuotesFile, ImageKeywords } from '../src/shared/types'
 

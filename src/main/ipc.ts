@@ -1,4 +1,4 @@
-import { ipcMain, shell } from 'electron'
+import { ipcMain, shell, BrowserWindow } from 'electron'
 import { getSettings, patchSettings } from './settings'
 import type { DeepPartial, Settings } from '@shared/types'
 
@@ -22,7 +22,7 @@ export function registerIpcHandlers(): void {
   })
 
   ipcMain.handle('app:toggleFullscreen', (_e) => {
-    const win = _e.sender.getOwnerBrowserWindow()
+    const win = BrowserWindow.fromWebContents(_e.sender)
     win?.setFullScreen(!win.isFullScreen())
   })
 
@@ -32,6 +32,6 @@ export function registerIpcHandlers(): void {
   })
 
   ipcMain.handle('app:close', (_e) => {
-    _e.sender.getOwnerBrowserWindow()?.close()
+    BrowserWindow.fromWebContents(_e.sender)?.close()
   })
 }

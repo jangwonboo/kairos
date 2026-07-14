@@ -15,7 +15,7 @@ function getPool(): string[] {
   if (!existsSync(dir)) return []
 
   pool = readdirSync(dir)
-    .filter((f) => f.endsWith('.webp'))
+    .filter((f) => /\.(webp|jpg|jpeg)$/.test(f))
     .map((f) => join(dir, f))
 
   return pool

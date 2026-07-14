@@ -136,8 +136,14 @@ app.whenReady().then(() => {
   // Serve local cached images via asset:// so file:// cross-origin block doesn't affect dev mode
   protocol.handle('asset', (request) => {
     const { hostname, pathname } = new URL(request.url)
-    // Chromium normalizes asset:///C:/path → asset://c/path (drive letter becomes hostname)
-    const filePath = decodeURIComponent(hostname.toUpperCase() + ':' + pathname)
+    // Chromium may normalize asset:///C:/path → asset://c/path (drive letter as hostname)
+    // OR pass asset:///C:/path with empty hostname and /C:/path as pathname
+    let filePath: string
+    if (hostname) {
+      filePath = decodeURIComponent(hostname.toUpperCase() + ':' + pathname)
+    } else {
+      filePath = decodeURIComponent(pathname.replace(/^\//, ''))
+    }
     log('asset', `url=${request.url} → path=${filePath}`)
     try {
       const data = readFileSync(filePath)

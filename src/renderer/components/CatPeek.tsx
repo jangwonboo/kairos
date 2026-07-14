@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react'
 type Phase = 'idle' | 'in' | 'peek' | 'out'
 
 const POSES: React.CSSProperties[] = [
-  { bottom: '-15px', left: '50%',  transform: 'translateX(-50%)' },
-  { bottom: '-15px', left: '16%' },
-  { bottom: '-15px', right: '16%' },
-  { top: '42%', left:  '-15px', transform: 'translateY(-50%) rotate(90deg)' },
-  { top: '38%', right: '-15px', transform: 'translateY(-50%) rotate(-90deg)' },
+  { bottom: '0px', left: '50%',  transform: 'translateX(-50%)' },
+  { bottom: '0px', left: '16%' },
+  { bottom: '0px', right: '16%' },
+  { top: '42%', left:  '0px', transform: 'translateY(-50%) rotate(90deg)' },
+  { top: '38%', right: '0px', transform: 'translateY(-50%) rotate(-90deg)' },
 ]
 
 export function CatPeek(): JSX.Element {
