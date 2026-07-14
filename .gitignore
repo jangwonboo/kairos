@@ -1,0 +1,26 @@
+node_modules/
+dist/
+out/
+
+# 빌드 중간 산출물은 커밋 (data/)
+# data/ 를 .gitignore에서 제외하지 않음
+
+# 환경 변수 / 비밀키
+.env
+.env.local
+*.pem
+*.key
+
+# 이미지 캐시 (userData 경로, 소스트리 밖이므로 불필요하지만 명시)
+bg-cache/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/settings.json
+.idea/
+*.suo
+*.user

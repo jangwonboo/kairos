@@ -1,0 +1,38 @@
+appId: com.example.kairos
+productName: Kairos
+directories:
+  buildResources: build
+  output: dist
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: portable
+      arch:
+        - x64
+  icon: build/icon.ico
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+
+extraResources:
+  - from: resources/quotes.json
+    to: quotes.json
+  - from: resources/fallback-bg
+    to: fallback-bg
+    filter:
+      - "**/*.webp"
+  - from: resources/fonts
+    to: fonts
+    filter:
+      - "**/*.woff2"
+      - "**/*.ttf"
+  - from: resources/FIREWALL.md
+    to: FIREWALL.md
+
+# 자동 업데이트 비활성 (사내망 고려)
+publish: null
