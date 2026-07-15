@@ -10,16 +10,19 @@ import type {
 
 contextBridge.exposeInMainWorld('api', {
   onTick: (cb: (payload: TickPayload) => void) => {
-    ipcRenderer.on('clock:tick', (_e, payload) => cb(payload))
-    return () => ipcRenderer.removeAllListeners('clock:tick')
+    const handler = (_e: Electron.IpcRendererEvent, payload: TickPayload) => cb(payload)
+    ipcRenderer.on('clock:tick', handler)
+    return () => ipcRenderer.removeListener('clock:tick', handler)
   },
   onBgNext: (cb: (payload: BgNextPayload) => void) => {
-    ipcRenderer.on('bg:next', (_e, payload) => cb(payload))
-    return () => ipcRenderer.removeAllListeners('bg:next')
+    const handler = (_e: Electron.IpcRendererEvent, payload: BgNextPayload) => cb(payload)
+    ipcRenderer.on('bg:next', handler)
+    return () => ipcRenderer.removeListener('bg:next', handler)
   },
   onBgError: (cb: (payload: BgErrorPayload) => void) => {
-    ipcRenderer.on('bg:error', (_e, payload) => cb(payload))
-    return () => ipcRenderer.removeAllListeners('bg:error')
+    const handler = (_e: Electron.IpcRendererEvent, payload: BgErrorPayload) => cb(payload)
+    ipcRenderer.on('bg:error', handler)
+    return () => ipcRenderer.removeListener('bg:error', handler)
   },
   getSettings: (): Promise<Settings> => ipcRenderer.invoke('settings:get'),
   setSettings: (patch: DeepPartial<Settings>): Promise<Settings> =>

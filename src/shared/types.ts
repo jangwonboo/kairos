@@ -55,7 +55,6 @@ export interface Settings {
     language: 'en' | 'ko' | 'both'
     sfwOnly: boolean
     fontScale: number
-    theme: 'auto' | 'dark' | 'light'
     quoteFallbackWindowMin: number
     showCredit: boolean
   }

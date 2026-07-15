@@ -10,7 +10,7 @@ function getPool(): string[] {
   if (pool.length > 0) return pool
   const dir = app.isPackaged
     ? join(process.resourcesPath, 'fallback-bg')
-    : join(__dirname, '../../../../resources/fallback-bg')
+    : join(__dirname, '../../resources/fallback-bg')
 
   if (!existsSync(dir)) return []
 

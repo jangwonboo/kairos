@@ -3,7 +3,6 @@ import { BackgroundStage } from './components/BackgroundStage'
 import { QuoteCard } from './components/QuoteCard'
 import { CreditBadge } from './components/CreditBadge'
 import { SettingsPanel } from './components/settings/SettingsPanel'
-import { CatPeek } from './components/CatPeek'
 import type { TickPayload, BgNextPayload, Credit, Quote, Settings, DeepPartial } from '@shared/types'
 
 type State = {
@@ -121,7 +120,6 @@ export function App(): JSX.Element {
         />
       )}
 
-      <CatPeek />
     </div>
   )
 }

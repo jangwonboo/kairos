@@ -135,7 +135,7 @@ body { -webkit-user-select: none; user-select: none; }
   font-style: italic;
 }
 
-.quote-block--en .quote-text { font-family: var(--font-en); }
+.quote-block--en .quote-text { font-family: var(--font-en); font-size: clamp(1.265rem, 2.53vw, 1.84rem); }
 .quote-block--ko .quote-text { font-family: var(--font-ko); font-style: normal; }
 
 .quote-attribution {
@@ -147,7 +147,7 @@ body { -webkit-user-select: none; user-select: none; }
   letter-spacing: 0.04em;
 }
 
-.quote-block--en .quote-attribution { font-family: var(--font-en); }
+.quote-block--en .quote-attribution { font-family: var(--font-en); font-size: clamp(0.8625rem, 1.38vw, 1.035rem); }
 .quote-block--ko .quote-attribution { font-family: var(--font-ko); }
 
 mark.time-highlight {
@@ -359,6 +359,15 @@ mark.time-highlight {
 .settings-section button:hover { background: rgba(255,255,255,0.18); }
 .settings-section button:disabled { opacity: 0.4; cursor: not-allowed; }
 
+.settings-group-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
 .test-results {
   list-style: none;
   display: flex;
@@ -390,45 +399,3 @@ mark.time-highlight {
   .bg-layer--inactive { opacity: 0; }
 }
 
-/* ── Cat Peek ──────────────────────────────────────────────────────────────── */
-.cat-wrap {
-  transform-origin: center bottom;
-  -webkit-app-region: no-drag;
-}
-
-.cat-phase-in  { animation: catIn  0.85s cubic-bezier(0.34, 1.45, 0.64, 1) forwards; }
-.cat-phase-out { animation: catOut 1.1s  ease-in forwards; }
-.cat-phase-peek { animation: catBob 2.6s ease-in-out infinite; }
-
-@keyframes catIn {
-  from { scale: 1 0.04; opacity: 0; }
-  40%  { opacity: 1; }
-  to   { scale: 1 1;    opacity: 1; }
-}
-@keyframes catOut {
-  from { scale: 1 1;    opacity: 1; }
-  to   { scale: 1 0.04; opacity: 0; }
-}
-@keyframes catBob {
-  0%, 100% { translate: 0 0px;   }
-  50%       { translate: 0 -9px; }
-}
-
-/* pupils */
-.cat-pupil {
-  transform-box: fill-box;
-  transform-origin: center;
-}
-.cat-pupil--roll { animation: pupilRoll 1.7s ease-in-out infinite; }
-.cat-pupil--rev  { animation-direction: reverse; }
-
-@keyframes pupilRoll {
-  0%   { transform: translate(0px,   0px);  }
-  14%  { transform: translate(5px,  -4px);  }
-  28%  { transform: translate(7px,   3px);  }
-  42%  { transform: translate(2px,   7px);  }
-  57%  { transform: translate(-6px,  4px);  }
-  71%  { transform: translate(-7px, -2px);  }
-  85%  { transform: translate(-2px, -6px);  }
-  100% { transform: translate(0px,   0px);  }
-}

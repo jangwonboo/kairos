@@ -13,9 +13,8 @@ try {
 const DEFAULTS: Settings = {
   display: {
     language: 'both',
-    sfwOnly: true,
+    sfwOnly: false,
     fontScale: 1.0,
-    theme: 'auto',
     quoteFallbackWindowMin: 3,
     showCredit: true
   },
@@ -25,7 +24,7 @@ const DEFAULTS: Settings = {
     keys: {},
     useQuoteKeywords: true,
     defaultQuery: 'minimal, moody, atmospheric',
-    changeMode: 'interval',
+    changeMode: 'per-quote',
     intervalMin: 10,
     cacheMaxItems: 60,
     cacheMaxMB: 250
@@ -38,7 +37,7 @@ const DEFAULTS: Settings = {
       overlayOpacity: 0.35
     },
     text: {
-      effect: 'blur-lift',
+      effect: 'typewriter',
       durationMult: 1,
       stagger: true
     },

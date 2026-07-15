@@ -25,15 +25,6 @@ export function DisplaySettings({ settings, onSave }: Props): JSX.Element {
       </label>
 
       <label>
-        <input
-          type="checkbox"
-          checked={display.sfwOnly}
-          onChange={(e) => patch({ sfwOnly: e.target.checked })}
-        />
-        SFW 인용문만 표시
-      </label>
-
-      <label>
         글자 크기: {display.fontScale.toFixed(1)}×
         <input
           type="range"
@@ -43,17 +34,6 @@ export function DisplaySettings({ settings, onSave }: Props): JSX.Element {
         />
       </label>
 
-      <label>
-        테마
-        <select
-          value={display.theme}
-          onChange={(e) => patch({ theme: e.target.value as Settings['display']['theme'] })}
-        >
-          <option value="auto">시스템 설정</option>
-          <option value="dark">다크</option>
-          <option value="light">라이트</option>
-        </select>
-      </label>
     </div>
   )
 }

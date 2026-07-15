@@ -67,8 +67,8 @@ function applyCSP(): void {
 
 function createWindow(): void {
   win = new BrowserWindow({
-    width: 1280,
-    height: 720,
+    width: 1024,
+    height: 576,
     frame: false,
     backgroundColor: '#000000',
     webPreferences: {
@@ -122,8 +122,8 @@ function sendTick(): void {
   const payload: TickPayload = { time, quote }
   win.webContents.send('clock:tick', payload)
 
-  // Background update
-  if (quote && settings.background.enabled && !settings.network.offlineMode) {
+  // Background update — offlineMode/disabled handled inside fetchAndSendBackground
+  if (quote && settings.background.enabled) {
     if (shouldChangeBg(quote, minuteIndex)) {
       lastBgChangeMinute = minuteIndex
       lastQuoteId = quote.id

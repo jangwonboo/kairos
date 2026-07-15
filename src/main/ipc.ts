@@ -12,9 +12,14 @@ const OPEN_EXTERNAL_ALLOWLIST = [
 export function registerIpcHandlers(): void {
   ipcMain.handle('settings:get', () => getSettings())
 
-  ipcMain.handle('settings:set', (_e, patch: DeepPartial<Settings>) =>
-    patchSettings(patch as Partial<Settings>)
-  )
+  ipcMain.handle('settings:set', (_e, patch: DeepPartial<Settings>) => {
+    const updated = patchSettings(patch as Partial<Settings>)
+    if ('startup' in patch && patch.startup && 'autoLaunch' in patch.startup) {
+      const { app } = require('electron') as typeof import('electron')
+      app.setLoginItemSettings({ openAtLogin: !!updated.startup.autoLaunch })
+    }
+    return updated
+  })
 
   ipcMain.handle('net:test', async () => {
     const { runProviderTests } = await import('./net/diagnostics')
